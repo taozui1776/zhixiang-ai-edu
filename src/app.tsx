@@ -1,5 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import { Layout } from "@/components/Layout";
+import { TeacherAuthProvider } from "@/context/TeacherAuthContext";
 import NotFoundPage from "@/pages/NotFoundPage/NotFoundPage";
 import HomePage from "@/pages/HomePage/HomePage";
 import LoginPage from "@/pages/LoginPage/LoginPage";
@@ -41,7 +42,8 @@ import MyMaterialsPage from "@/pages/MyMaterialsPage/MyMaterialsPage";
 
 export default function App() {
   return (
-    <Routes>
+    <TeacherAuthProvider>
+      <Routes>
       {/* 登录页（独立布局，无Header/Footer） */}
       <Route path="/login" element={<LoginPage />} />
 
@@ -90,5 +92,6 @@ export default function App() {
       </Route>
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
+    </TeacherAuthProvider>
   );
 }
