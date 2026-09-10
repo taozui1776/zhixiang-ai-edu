@@ -39,6 +39,7 @@
     "@radix-ui/react-toggle-group": "^1.1.10",
     "@radix-ui/react-tooltip": "^1.1.18",
     "@tailwindcss/typography": "^0.5.19",
+    "@tailwindcss/vite": "^4.3.3",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "cmdk": "^1.1.1",
@@ -70,9 +71,9 @@
   },
   "devDependencies": {
     "@types/node": "^24",
-    "@vitejs/plugin-react": "^4.3.4",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@vitejs/plugin-react": "^4.3.4",
     "typescript": "~5.9",
     "vite": "^8"
   }
