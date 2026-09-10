@@ -2,6 +2,7 @@ import { useState, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import {
+  Play,
   PlayCircle,
   BookOpen,
   FlaskConical,
@@ -232,266 +233,193 @@ export default function HomePage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
         >
-          <Card className="border border-border/60 shadow-sm overflow-hidden">
+          <Card className="border border-slate-200 shadow-sm overflow-hidden">
             <CardContent className="p-0">
               <div className="flex flex-col lg:flex-row min-h-[480px]">
-                {/* 左侧：班级 + 课程信息（约25%） */}
-                <div className="lg:w-1/4 border-b lg:border-b-0 lg:border-r border-border/60 bg-gradient-to-b from-primary/5 to-transparent p-5 space-y-5">
-                  {/* 班级选择（更醒目，最近使用置顶） */}
-                  <div>
-                    <label className="text-sm font-semibold text-foreground mb-2 flex items-center gap-2">
-                      <GraduationCap className="size-4 text-emerald-600" />
-                      授课班级
-                    </label>
-                    <Select value={selectedClassId} onValueChange={setSelectedClassId}>
-                      <SelectTrigger className="h-12 text-base font-semibold border-2 border-emerald-500/30 bg-emerald-50/50 hover:bg-emerald-50 hover:border-emerald-500/50 transition-colors">
-                        <SelectValue placeholder="选择班级" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectGroup>
-                          <SelectLabel className="text-[10px] font-semibold text-emerald-600 uppercase tracking-wider">
-                            最近使用
-                          </SelectLabel>
-                          {MOCK_CLASSES.slice(0, 2).map((c) => (
-                            <SelectItem key={`recent-${c.id}`} value={c.id} className="text-sm">
-                              <span className="flex items-center justify-between w-full gap-4">
-                                <span className="font-medium">{c.name}</span>
-                                <span className="text-[10px] text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded">
-                                  最近
-                                </span>
-                              </span>
-                            </SelectItem>
-                          ))}
-                        </SelectGroup>
-                        <SelectGroup>
-                          <SelectLabel className="text-[10px] font-semibold text-muted-foreground uppercase tracking-wider">
-                            全部班级
-                          </SelectLabel>
+                {/* 左侧：上课准备区（约30%） */}
+                <div className="lg:w-[30%] border-b lg:border-b-0 lg:border-r border-slate-200 p-5 flex flex-col"
+                  style={{ background: 'linear-gradient(180deg, #f8f7ff 0%, #ffffff 100%)' }}>
+                  
+                  {/* 今日课程卡片 */}
+                  <div className="mb-4 rounded-xl p-4 text-white relative overflow-hidden"
+                    style={{ background: 'linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #a855f7 100%)' }}>
+                    <div className="absolute -right-4 -top-4 w-20 h-20 rounded-full bg-white/10" />
+                    <div className="absolute -right-8 -bottom-8 w-24 h-24 rounded-full bg-white/5" />
+                    
+                    <div className="relative z-10">
+                      <div className="flex items-center gap-2 mb-2">
+                        <div className="w-2 h-2 rounded-full bg-white animate-pulse" />
+                        <span className="text-xs opacity-80">今日课程</span>
+                      </div>
+                      <div className="text-lg font-bold mb-1">{selectedCourse?.title || '机器视觉应用'}</div>
+                      <div className="flex items-center gap-2 text-xs opacity-90 flex-wrap">
+                        <span>{selectedClass?.name || '七年级(1)班'}</span>
+                        <span className="w-1 h-1 rounded-full bg-white/50" />
+                        <span>第3节</span>
+                        <span className="w-1 h-1 rounded-full bg-white/50" />
+                        <span>10:00-10:45</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* 上课配置 */}
+                  <div className="space-y-3 flex-1">
+                    <div>
+                      <label className="text-xs font-medium text-slate-500 mb-1 block">授课班级</label>
+                      <Select value={selectedClassId} onValueChange={setSelectedClassId}>
+                        <SelectTrigger className="h-9 text-sm border border-slate-200 bg-white hover:border-violet-300 transition-colors">
+                          <SelectValue placeholder="选择班级" />
+                        </SelectTrigger>
+                        <SelectContent>
                           {MOCK_CLASSES.map((c) => (
                             <SelectItem key={c.id} value={c.id} className="text-sm">
                               <span className="flex items-center justify-between w-full gap-4">
                                 <span>{c.name}</span>
-                                <span className="text-[10px] text-muted-foreground">
-                                  {c.stage} · {c.studentCount}人
-                                </span>
+                                <span className="text-[10px] text-slate-400">{c.stage} · {c.studentCount}人</span>
                               </span>
                             </SelectItem>
                           ))}
-                        </SelectGroup>
-                      </SelectContent>
-                    </Select>
-                    {selectedClass && (
-                      <p className="text-xs text-muted-foreground mt-1.5">
-                        {selectedClass.grade} · {selectedClass.studentCount}名学生 · {selectedClass.classroom}
-                      </p>
+                        </SelectContent>
+                      </Select>
+                    </div>
+
+                    <div>
+                      <label className="text-xs font-medium text-slate-500 mb-1 block">授课课程</label>
+                      <Select value={selectedCourseId} onValueChange={setSelectedCourseId}>
+                        <SelectTrigger className="h-9 text-sm border border-slate-200 bg-white hover:border-violet-300 transition-colors">
+                          <SelectValue placeholder="选择课程" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          {classCourses.map((c) => (
+                            <SelectItem key={c.id} value={c.id} className="text-sm">{c.title}</SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    </div>
+
+                    {selectedCourse && (
+                      <div className="flex items-center gap-4 text-xs text-slate-500 pt-1">
+                        <span className="flex items-center gap-1">
+                          <Clock className="size-3" /> {selectedCourse.totalLessons}课时
+                        </span>
+                        <span className="flex items-center gap-1">
+                          <BookOpen className="size-3" /> {selectedCourse.difficulty}
+                        </span>
+                      </div>
                     )}
                   </div>
 
-                  {/* 课程选择下拉 */}
-                  <div>
-                    <label className="text-xs font-medium text-muted-foreground mb-1.5 block">
-                      当前课程
-                    </label>
-                    <Select
-                      value={selectedCourseId}
-                      onValueChange={setSelectedCourseId}
-                    >
-                      <SelectTrigger className="h-9 text-sm">
-                        <SelectValue placeholder="选择课程" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        {classCourses.map((c) => (
-                          <SelectItem key={c.id} value={c.id} className="text-sm">
-                            {c.title}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                  </div>
-
-                  {/* 课程封面图 + 信息 */}
-                  {selectedCourse && (
-                    <div className="rounded-xl overflow-hidden border border-border/60 bg-card">
-                      <div className="aspect-video bg-muted relative">
-                        <Image
-                          src={selectedCourse.coverImage}
-                          alt={selectedCourse.title}
-                          className="w-full h-full object-cover"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-                        <div className="absolute bottom-2 left-2 right-2">
-                          <p className="text-white text-sm font-semibold line-clamp-1">
-                            {selectedCourse.title}
-                          </p>
-                        </div>
-                      </div>
-                      <div className="p-3 space-y-2">
-                        <div className="flex items-center justify-between text-xs">
-                          <span className="text-muted-foreground flex items-center gap-1">
-                            <Clock className="size-3" />
-                            {selectedCourse.totalLessons} 课时
-                          </span>
-                          <Badge variant="outline" className="text-[10px]">
-                            {selectedCourse.difficulty}
-                          </Badge>
-                        </div>
-                      </div>
-                    </div>
-                  )}
-
-                  {/* 学生快捷登录按钮 */}
+                  {/* 开始上课按钮 */}
                   <Button
-                    variant="default"
-                    className="w-full h-10 text-sm"
-                    onClick={() => toast.info('学生登录二维码已生成')}
+                    size="lg"
+                    className="w-full h-11 text-sm font-bold shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all mt-4"
+                    style={{ background: 'linear-gradient(135deg, #6366f1, #8b5cf6)' }}
+                    onClick={() => selectedCourse && navigate(`/teach/${selectedCourse.id}`)}
                   >
-                    <Users className="size-4 mr-2" />
-                    学生快捷登录
+                    <Play className="size-4 mr-2 fill-current" />
+                    开始上课
                   </Button>
                 </div>
 
-                {/* 右侧：课时列表（约75%） */}
-                <div className="lg:w-3/4 p-5 md:p-6">
-                  <div className="flex items-center justify-between mb-4">
-                    <h3 className="text-lg font-semibold text-foreground flex items-center gap-2">
-                      <BookOpen className="size-5 text-primary" />
-                      课时列表
-                    </h3>
-                    <Badge variant="outline" className="text-xs">
-                      共 {selectedCourse?.totalLessons || 0} 课时
-                    </Badge>
+                {/* 右侧：课时列表（约70%） */}
+                <div className="lg:w-[70%] p-5 bg-white">
+                  {/* 头部 + 进度条 */}
+                  <div className="mb-4">
+                    <div className="flex items-center justify-between mb-3">
+                      <h3 className="text-base font-bold text-slate-800 flex items-center gap-2">
+                        <BookOpen className="size-5 text-violet-600" />
+                        课时列表
+                      </h3>
+                      <div className="flex items-center gap-3">
+                        <span className="text-xs text-slate-400">进度 1/8</span>
+                        <Badge variant="outline" className="text-xs border-slate-200 text-slate-600">
+                          共 {selectedCourse?.totalLessons || 0} 课时
+                        </Badge>
+                      </div>
+                    </div>
+                    {/* 进度条 */}
+                    <div className="h-1.5 bg-slate-100 rounded-full overflow-hidden">
+                      <div className="h-full rounded-full transition-all duration-500"
+                        style={{ width: '12.5%', background: 'linear-gradient(90deg, #6366f1, #8b5cf6)' }} />
+                    </div>
                   </div>
 
-                  <div className="space-y-3 max-h-[380px] overflow-y-auto pr-1">
+                  {/* 课时列表 */}
+                  <div className="space-y-2 max-h-[320px] overflow-y-auto pr-1">
                     {lessons.map((lesson, i) => (
                       <motion.div
                         key={lesson.id}
                         initial={{ opacity: 0, x: -8 }}
                         animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.3, delay: 0.15 + i * 0.05 }}
-                        className={`relative rounded-xl border p-4 md:p-5 transition-all overflow-hidden ${
+                        transition={{ duration: 0.3, delay: 0.1 + i * 0.04 }}
+                        onClick={() => selectedCourse && navigate(`/teach/${selectedCourse.id}`)}
+                        className={`relative rounded-lg border p-3.5 transition-all cursor-pointer group ${
                           lesson.status === 'completed'
-                            ? 'bg-muted/30 border-border/40'
+                            ? 'bg-slate-50/50 border-slate-100'
                             : lesson.status === 'current'
-                              ? 'bg-gradient-to-r from-primary/5 via-primary/3 to-transparent border-primary/30 shadow-sm'
-                              : 'bg-card border-border/60 hover:border-primary/20 hover:bg-primary/[0.02]'
+                              ? 'bg-gradient-to-r from-violet-50/80 to-white border-violet-200 shadow-sm'
+                              : 'bg-white border-slate-100 hover:border-violet-200 hover:bg-violet-50/30'
                         }`}
                       >
-                        {/* 装饰：智象风格小插画元素 */}
-                        <div className="absolute right-4 top-1/2 -translate-y-1/2 opacity-[0.03] pointer-events-none">
-                          <Sparkles className="size-24" />
-                        </div>
+                        <div className="flex items-center gap-3">
+                          {/* 序号 */}
+                          <div className={`size-8 shrink-0 rounded-full flex items-center justify-center text-xs font-bold ${
+                            lesson.status === 'completed'
+                              ? 'bg-emerald-100 text-emerald-600'
+                              : lesson.status === 'current'
+                                ? 'bg-gradient-to-br from-violet-500 to-indigo-500 text-white shadow-sm'
+                                : 'bg-slate-100 text-slate-400 group-hover:bg-violet-100 group-hover:text-violet-600 transition-colors'
+                          }`}>
+                            {lesson.status === 'completed' ? <CheckCircle2 className="size-4" /> : lesson.index}
+                          </div>
 
-                        <div className="flex items-center gap-4 relative z-10">
-                          {/* 左侧：序号 + 标题 */}
-                          <div className="flex items-start gap-3 flex-1 min-w-0">
-                            {/* 序号圆环 */}
-                            <div
-                              className={`size-10 shrink-0 rounded-full flex items-center justify-center text-sm font-bold ${
-                                lesson.status === 'completed'
-                                  ? 'bg-emerald-100 text-emerald-600'
-                                  : lesson.status === 'current'
-                                    ? 'bg-primary text-primary-foreground shadow-md shadow-primary/20'
-                                    : 'bg-muted text-muted-foreground'
-                              }`}
-                            >
-                              {lesson.status === 'completed' ? (
-                                <CheckCircle2 className="size-5" />
-                              ) : (
-                                <span>{lesson.index}</span>
-                              )}
-                            </div>
-
-                            <div className="flex-1 min-w-0">
-                              <h4 className="text-sm md:text-base font-medium text-foreground line-clamp-1">
-                                课时 {lesson.index}  {lesson.title}
-                              </h4>
-                              <div className="flex items-center gap-2 mt-1">
-                                {lesson.status === 'completed' && (
-                                  <>
-                                    <Badge
-                                      variant="outline"
-                                      className="text-[10px] bg-emerald-50 text-emerald-600 border-emerald-200"
-                                    >
-                                      已完成
-                                    </Badge>
-                                    <span className="text-[11px] text-muted-foreground">
-                                      {lesson.time}
-                                    </span>
-                                  </>
-                                )}
-                                {lesson.status === 'current' && (
-                                  <Badge
-                                    variant="outline"
-                                    className="text-[10px] bg-amber-50 text-amber-600 border-amber-200"
-                                  >
-                                    未开始 · 下一节
-                                  </Badge>
-                                )}
-                                {lesson.status === 'upcoming' && (
-                                  <Badge
-                                    variant="outline"
-                                    className="text-[10px] text-muted-foreground"
-                                  >
-                                    未开始
-                                  </Badge>
-                                )}
-                                <span className="text-[11px] text-muted-foreground flex items-center gap-1">
-                                  <Clock className="size-3" />
-                                  {lesson.duration} 分钟
+                          {/* 内容 */}
+                          <div className="flex-1 min-w-0">
+                            <h4 className={`text-sm font-medium truncate ${
+                              lesson.status === 'completed' ? 'text-slate-400' : 'text-slate-800'
+                            }`}>
+                              课时{lesson.index} · {lesson.title}
+                            </h4>
+                            <div className="flex items-center gap-2 mt-1">
+                              {lesson.status === 'current' && (
+                                <span className="text-[10px] px-1.5 py-0.5 rounded bg-amber-50 text-amber-600 border border-amber-100 font-medium">
+                                  下一节
                                 </span>
-                              </div>
+                              )}
+                              {lesson.status === 'completed' && (
+                                <span className="text-[10px] px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-600 border border-emerald-100">
+                                  已完成
+                                </span>
+                              )}
+                              <span className="text-[11px] text-slate-400 flex items-center gap-1">
+                                <Clock className="size-3" /> {lesson.duration || 40}分钟
+                              </span>
+                              <span className="text-[10px] text-slate-300 flex items-center gap-1 ml-1">
+                                <span className="px-1 py-0.5 rounded bg-slate-50 border border-slate-100">课件</span>
+                                <span className="px-1 py-0.5 rounded bg-slate-50 border border-slate-100">实验</span>
+                              </span>
                             </div>
                           </div>
 
-                          {/* 右侧：操作按钮 */}
-                          <div className="shrink-0">
-                            {lesson.status === 'current' && (
-                              <Button
-                                size="sm"
-                                className="h-9 px-4 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 shadow-md shadow-primary/20"
-                                onClick={() => handleStartLesson(lesson.id)}
-                              >
-                                <PlayCircle className="size-4 mr-1.5" />
-                                开始上课
-                              </Button>
-                            )}
-                            {lesson.status === 'completed' && (
-                              <Button
-                                size="sm"
-                                variant="outline"
-                                className="h-9 text-xs"
-                                onClick={() => navigate(`/teach/${selectedCourse?.id}`)}
-                              >
-                                复习
-                                <ChevronRight className="size-3 ml-1" />
-                              </Button>
-                            )}
-                            {lesson.status === 'upcoming' && (
-                              <Circle className="size-3 text-muted-foreground/30" />
-                            )}
-                          </div>
+                          {/* 箭头 */}
+                          <ChevronRight className={`size-4 shrink-0 transition-colors ${
+                            lesson.status === 'current' ? 'text-violet-500' : 'text-slate-200 group-hover:text-violet-400'
+                          }`} />
                         </div>
                       </motion.div>
                     ))}
                   </div>
 
-                  {/* 查看全部课时 */}
-                  {(selectedCourse?.totalLessons ?? 0) > 5 && (
-                    <div className="mt-4 pt-3 border-t border-border/40">
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        className="w-full h-8 text-xs text-muted-foreground hover:text-foreground"
-                        onClick={() =>
-                          selectedCourse && navigate(`/courses/${selectedCourse.id}`)
-                        }
-                      >
-                        查看全部 {selectedCourse?.totalLessons} 课时
-                        <ChevronRight className="size-3 ml-0.5" />
-                      </Button>
-                    </div>
-                  )}
+                  {/* 查看全部 */}
+                  <div className="mt-3 pt-3 border-t border-slate-100">
+                    <button
+                      onClick={() => selectedCourse && navigate(`/courses/${selectedCourse.id}`)}
+                      className="text-xs text-violet-600 hover:text-violet-700 font-medium flex items-center gap-1 mx-auto"
+                    >
+                      查看全部 {selectedCourse?.totalLessons || 0} 课时
+                      <ChevronRight className="size-3" />
+                    </button>
+                  </div>
                 </div>
               </div>
             </CardContent>

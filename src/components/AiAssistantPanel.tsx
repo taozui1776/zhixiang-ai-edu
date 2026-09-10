@@ -308,15 +308,16 @@ ${additional ? '附加要求：' + additional : ''}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => setIsOpen(true)}
-            className="fixed bottom-6 right-6 z-[60] size-14 rounded-full bg-gradient-to-br from-indigo-500 via-purple-500 to-blue-600 shadow-lg shadow-purple-500/30 flex items-center justify-center text-white group"
+            className="fixed bottom-6 right-6 z-[60] size-14 rounded-full bg-gradient-to-br from-indigo-500 via-purple-500 to-blue-600 shadow-lg shadow-purple-500/30 flex items-center justify-center text-white group overflow-hidden"
             aria-label="打开AI助手"
           >
-            <Image
-              src={ELEPHANT_AVATAR}
-              alt="智象AI助手"
-              className="size-9 object-contain group-hover:scale-110 transition-transform"
-            />
-            <span className="absolute -top-1 -right-1 size-3 bg-emerald-500 rounded-full border-2 border-white" />
+            {/* 背景光晕动画 */}
+            <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent animate-pulse" />
+            {/* 小象动画 */}
+            <span className="text-3xl relative z-10 animate-bounce" style={{ animationDuration: '2s' }}>
+              🐘
+            </span>
+            <span className="absolute -top-1 -right-1 size-3 bg-emerald-500 rounded-full border-2 border-white animate-pulse" />
           </motion.button>
         )}
       </AnimatePresence>
@@ -346,7 +347,7 @@ ${additional ? '附加要求：' + additional : ''}
               <div className="flex items-center justify-between px-4 py-3 border-b border-border bg-gradient-to-r from-indigo-600 via-purple-600 to-blue-700 text-white">
                 <div className="flex items-center gap-3">
                   <div className="size-9 rounded-full bg-white/20 flex items-center justify-center overflow-hidden">
-                    <Image src={ELEPHANT_AVATAR} alt="智象" className="size-7 object-contain" />
+                    <span className="text-2xl">🐘</span>
                   </div>
                   <div>
                     <h3 className="font-semibold text-sm">智象AI助手</h3>

@@ -4,7 +4,8 @@ import {
   Home, BookOpen, FlaskConical, Code2, Cpu, Sparkles,
   Users, BarChart3, GraduationCap, Search, Bell, HelpCircle,
   Play, Settings, LogOut, ChevronDown, FileText, Wrench,
-  BrainCircuit, Map, Shield, Building2, CreditCard, User
+  BrainCircuit, Map, Shield, Building2, CreditCard, User,
+  X, Clock, ChevronRight
 } from 'lucide-react';
 import { useTeacherAuth } from '@/context/TeacherAuthContext';
 import AiAssistantPanel from '@/components/AiAssistantPanel';
@@ -60,6 +61,15 @@ export const Layout = () => {
   const navigate = useNavigate();
   const { profile, logout } = useTeacherAuth();
   const [searchQuery, setSearchQuery] = useState('');
+  const [showQuickStart, setShowQuickStart] = useState(false);
+
+  // 最近课程（模拟数据）
+  const recentCourses = [
+    { id: 'course-primary-ai-intro', title: '身边的智能小伙伴', stage: '小学', lessons: 8, icon: '🤖' },
+    { id: 'course-junior-vision', title: '机器视觉应用', stage: '初中', lessons: 8, icon: '👁️' },
+    { id: 'course-pbl-general', title: 'PBL项目式学习', stage: '初中', lessons: 12, icon: '🎯' },
+    { id: 'course-senior-algorithm', title: '算法与人工智能', stage: '高中', lessons: 10, icon: '🧮' },
+  ];
 
   const isActive = (path: string) => {
     if (path === '/') return location.pathname === '/';
@@ -237,12 +247,12 @@ export const Layout = () => {
               <HelpCircle className="w-5 h-5" />
             </button>
             <button
-              onClick={() => navigate('/')}
+              onClick={() => setShowQuickStart(true)}
               className="ml-2 px-4 py-2 text-sm font-semibold text-white rounded-lg shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all flex items-center gap-2"
               style={{ background: 'linear-gradient(135deg, #8b5cf6, #6366f1)' }}
             >
               <Play className="w-4 h-4 fill-current" />
-              开始上课
+              快速上课
             </button>
           </div>
         </header>
@@ -252,6 +262,83 @@ export const Layout = () => {
           <Outlet />
         </main>
       </div>
+
+      {/* 快速开课弹窗 */}
+      {showQuickStart && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center">
+          {/* 遮罩 */}
+          <div
+            className="absolute inset-0 bg-black/40 backdrop-blur-sm"
+            onClick={() => setShowQuickStart(false)}
+          />
+          {/* 弹窗内容 */}
+          <div className="relative bg-white rounded-2xl shadow-2xl w-[480px] max-w-[90vw] overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+            {/* 头部 */}
+            <div className="px-6 py-4 border-b border-slate-100 flex items-center justify-between"
+              style={{ background: 'linear-gradient(135deg, #8b5cf6, #6366f1)' }}>
+              <div>
+                <h3 className="text-white text-lg font-bold">快速开课</h3>
+                <p className="text-indigo-200 text-xs mt-0.5">选择最近课程，一键进入授课模式</p>
+              </div>
+              <button
+                onClick={() => setShowQuickStart(false)}
+                className="w-8 h-8 rounded-lg flex items-center justify-center text-white/80 hover:bg-white/20 hover:text-white transition-all"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            {/* 课程列表 */}
+            <div className="p-4 max-h-[400px] overflow-y-auto">
+              <div className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3 px-1">
+                最近使用
+              </div>
+              <div className="space-y-2">
+                {recentCourses.map((course) => (
+                  <button
+                    key={course.id}
+                    onClick={() => {
+                      navigate(`/teach/${course.id}`);
+                      setShowQuickStart(false);
+                    }}
+                    className="w-full flex items-center gap-3 p-3 rounded-xl border border-slate-200 hover:border-violet-300 hover:bg-violet-50/50 transition-all group text-left"
+                  >
+                    <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-violet-100 to-indigo-100 flex items-center justify-center text-2xl flex-shrink-0">
+                      {course.icon}
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="text-sm font-semibold text-slate-800 group-hover:text-violet-700 transition-colors truncate">
+                        {course.title}
+                      </div>
+                      <div className="flex items-center gap-2 mt-0.5">
+                        <span className="text-[11px] text-slate-400 bg-slate-100 px-1.5 py-0.5 rounded">
+                          {course.stage}
+                        </span>
+                        <span className="text-[11px] text-slate-400 flex items-center gap-1">
+                          <Clock className="w-3 h-3" />
+                          {course.lessons}课时
+                        </span>
+                      </div>
+                    </div>
+                    <ChevronRight className="w-5 h-5 text-slate-300 group-hover:text-violet-500 group-hover:translate-x-0.5 transition-all flex-shrink-0" />
+                  </button>
+                ))}
+              </div>
+
+              {/* 更多课程 */}
+              <button
+                onClick={() => {
+                  navigate('/courses');
+                  setShowQuickStart(false);
+                }}
+                className="w-full mt-4 py-2.5 text-sm text-violet-600 hover:text-violet-700 font-medium border border-dashed border-violet-200 rounded-xl hover:bg-violet-50 transition-all"
+              >
+                浏览全部课程 →
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       <Toaster position="top-right" closeButton richColors />
       <AiAssistantPanel />
