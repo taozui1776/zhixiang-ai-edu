@@ -769,7 +769,7 @@ const stats = MOCK_LEARNING_STATS;
                   })}
                 </div>
                 <div className="flex flex-wrap gap-3">
-                  <Button size="sm" variant="secondary" onClick={() => navigate('/data-management')} className="gap-1.5">
+                  <Button size="sm" variant="secondary" onClick={() => navigate('/teacher/data-management')} className="gap-1.5">
                     <Database className="size-3.5" />
                     进入数据管理中心
                   </Button>

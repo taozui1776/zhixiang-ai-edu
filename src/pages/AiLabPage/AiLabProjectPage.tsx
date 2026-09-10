@@ -166,8 +166,8 @@ export default function AiLabProjectPage() {
           {/* 左侧：实验主区 */}
           <div className="lg:col-span-8 xl:col-span-9">
             <Card className="border-0 shadow-sm h-full">
+              <Tabs value={activeTab} onValueChange={setActiveTab}>
               <CardHeader className="pb-0">
-                <Tabs value={activeTab} onValueChange={setActiveTab}>
                   <TabsList className="bg-transparent h-9 p-0 gap-3 border-b-0">
                     <TabsTrigger
                       value="experiment"
@@ -191,7 +191,6 @@ export default function AiLabProjectPage() {
                       教学建议
                     </TabsTrigger>
                   </TabsList>
-                </Tabs>
               </CardHeader>
 
               <CardContent className="pt-4">
@@ -207,6 +206,7 @@ export default function AiLabProjectPage() {
                   <TeachingAdvice project={project} />
                 </TabsContent>
               </CardContent>
+              </Tabs>
             </Card>
           </div>
 
@@ -258,7 +258,7 @@ export default function AiLabProjectPage() {
                    {project.relatedLessons.map((rl, i) => (
                      <button
                        key={i}
-                       onClick={() => navigate(`/course/${rl.courseId}`)}
+                       onClick={() => navigate(`/courses/${rl.courseId}`)}
                        className="w-full text-left p-3 rounded-lg border border-border/60 bg-card hover:border-primary/40 hover:bg-primary/[0.03] transition-all group"
                      >
                        <div className="text-xs text-muted-foreground mb-0.5">{rl.courseTitle}</div>

@@ -1,5 +1,5 @@
 import { useState, type FormEvent } from 'react';
-import { useNavigate, Navigate } from 'react-router-dom';
+import { useNavigate, useLocation, Navigate } from 'react-router-dom';
 import { Eye, EyeOff, User, Lock, LogIn, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -12,14 +12,17 @@ const LOGO_URL = 'https://aka.doubaocdn.com/s/FTGHri7UGK';
 
 export default function LoginPage() {
   const navigate = useNavigate();
+  const location = useLocation();
   const { isLoggedIn, login, register } = useTeacherAuth();
   const [username, setUsername] = useState('teacher');
   const [password, setPassword] = useState('123456');
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
+  const from = (location.state as any)?.from || '/';
+
   if (isLoggedIn) {
-    return <Navigate to="/" replace />;
+    return <Navigate to={from} replace />;
   }
 
   const handleSubmit = async (e: FormEvent) => {
@@ -32,13 +35,24 @@ export default function LoginPage() {
     setIsLoading(true);
     await new Promise((r) => setTimeout(r, 600));
 
-    // 演示账号：优先用注册系统登录，失败则走 toast 提示
-    const result = login('teacher', username, password);
+    // 演示账号：优先登录，不存在则自动注册
+    let result = login('teacher', username, password);
+    if (!result.success && username === 'teacher' && password === '123456') {
+      register('teacher', {
+        role: 'teacher',
+        account: 'teacher',
+        name: '演示教师',
+        school: '希沃-智象体验学校',
+        stage: 'all',
+        password: '123456',
+      });
+      result = login('teacher', username, password);
+    }
     if (result.success) {
       toast.success('登录成功，欢迎回来！');
-      navigate('/', { replace: true });
+      navigate(from, { replace: true });
     } else {
-      toast.error(result.message + '（演示账号：teacher / 123456，需先注册）');
+      toast.error(result.message + '（演示账号：teacher / 123456）');
     }
     setIsLoading(false);
   };
@@ -114,7 +128,7 @@ export default function LoginPage() {
               <div className="size-16 rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-500 flex items-center justify-center mb-3 shadow-lg">
                 <Image src={LOGO_URL} alt="智象Logo" className="size-10 object-contain" />
               </div>
-              <h2 className="text-xl font-bold text-foreground">智象 AI 教育平台</h2>
+              <h2 className="text-xl font-bold text-foreground">希沃-智象AI人工智能教育平台</h2>
             </div>
 
             <h3 className="text-2xl font-bold text-foreground mb-1">教师登录</h3>

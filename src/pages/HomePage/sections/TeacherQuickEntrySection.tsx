@@ -48,7 +48,7 @@ export default function TeacherQuickEntrySection() {
               <p className="text-muted-foreground mt-1">继续上次的课堂进度，一键进入授课模式</p>
             </div>
             <Button variant="ghost" asChild className="text-muted-foreground hover:text-foreground">
-              <Link to="/teacher-center">
+              <Link to="/teacher">
                 教师中心
                 <ChevronRight className="size-4 ml-1" />
               </Link>

@@ -28,7 +28,6 @@ import {
   SelectItem,
 } from '@/components/ui/select';
 import StartClassDialog from '@/components/StartClassDialog';
-import AIAssistantFloat from '@/components/AIAssistantFloat';
 import { MOCK_CLASSES } from '@/data/school-classes';
 import { MOCK_COURSE_SUMMARY, type ICourseSummary } from '@/data/course-summary';
 import Image from '@/components/ui/image';
@@ -121,7 +120,6 @@ export default function HomePage() {
   const navigate = useNavigate();
   const { profile } = useTeacherAuth();
   const [startClassOpen, setStartClassOpen] = useState(false);
-  const [aiAssistantOpen, setAiAssistantOpen] = useState(false);
 
   // 默认选中七年级(1)班
   const [selectedClassId, setSelectedClassId] = useState<string>('class-g7-1');
@@ -182,7 +180,6 @@ export default function HomePage() {
     } else if (action === 'navigate' && path) {
       navigate(path);
     } else if (action === 'float') {
-      setAiAssistantOpen(true);
     }
   }
 
@@ -592,9 +589,6 @@ export default function HomePage() {
 
       {/* 开课设置弹窗 */}
       <StartClassDialog open={startClassOpen} onOpenChange={setStartClassOpen} />
-
-      {/* AI 助手浮窗 */}
-      <AIAssistantFloat open={aiAssistantOpen} onOpenChange={setAiAssistantOpen} />
     </div>
   );
 }

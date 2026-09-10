@@ -104,7 +104,7 @@ export default function CoursePrintPage() {
                 <span>总课时：{lessonsToPrint.length} 课时</span>
               </div>
               <div className="pt-8 text-xs text-muted-foreground">
-                智象 AI 通识教育平台 · 教师备课资料
+                希沃-智象AI通识教育平台 · 教师备课资料
               </div>
             </div>
           </section>
@@ -340,8 +340,8 @@ export default function CoursePrintPage() {
 
           {/* 页脚 */}
           <footer className="text-center text-xs text-muted-foreground pt-8 border-t border-border">
-            <p>智象 AI 通识教育平台 · 仅供教学使用</p>
-            <p className="mt-1">本资料由智象平台自动生成，教师可根据实际教学情况调整</p>
+            <p>希沃-智象AI通识教育平台 · 仅供教学使用</p>
+            <p className="mt-1">本资料由希沃-智象平台自动生成，教师可根据实际教学情况调整</p>
           </footer>
         </div>
       </div>

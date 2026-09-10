@@ -157,7 +157,7 @@ export default function CodingLabPage() {
                <Button
                  size="sm"
                  variant={hardwareStatus.connected ? 'outline' : 'default'}
-                 onClick={() => navigate('/hardware-connect')}
+                 onClick={() => navigate('/hardware/connect')}
                >
                  {hardwareStatus.connected ? (
                    <>

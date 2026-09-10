@@ -50,7 +50,7 @@ export default function TeacherTrainingPage() {
             </h1>
             <p className="text-white/80 max-w-2xl text-base">
               系统化教师培训教程，涵盖平台操作、工具使用、课程串讲，
-              帮助您快速掌握智象平台，上好每一节 AI 通识课。
+              帮助您快速掌握希沃-智象平台，上好每一节 AI 通识课。
             </p>
           </motion.div>
         </div>

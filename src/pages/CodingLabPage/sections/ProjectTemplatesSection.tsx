@@ -249,7 +249,7 @@ export default function ProjectTemplatesSection({
        toast.info('请先连接硬件设备');
        // 跳转到硬件连接中心并带上代码参数
        const encoded = encodeURIComponent(selected.code);
-       window.open(`/hardware-connect?code=${encoded}`, '_blank');
+       window.open(`/hardware/connect?code=${encoded}`, '_blank');
        return;
      }
      // 已连接：将代码存入 localStorage 供硬件连接中心读取，然后新窗口打开
@@ -259,7 +259,7 @@ export default function ProjectTemplatesSection({
        // ignore
      }
      toast.success('代码已准备好，正在打开硬件连接中心…');
-     window.open('/hardware-connect', '_blank');
+     window.open('/hardware/connect', '_blank');
    };
 
   return (

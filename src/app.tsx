@@ -1,6 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import { Layout } from "@/components/Layout";
 import { TeacherAuthProvider } from "@/context/TeacherAuthContext";
+import RequireAuth from "@/components/RequireAuth";
 import NotFoundPage from "@/pages/NotFoundPage/NotFoundPage";
 import HomePage from "@/pages/HomePage/HomePage";
 import LoginPage from "@/pages/LoginPage/LoginPage";
@@ -47,8 +48,8 @@ export default function App() {
       {/* 登录页（独立布局，无Header/Footer） */}
       <Route path="/login" element={<LoginPage />} />
 
-      {/* 主布局（登录后 + 访客可访问） */}
-      <Route element={<Layout />}>
+      {/* 主布局（需登录） */}
+      <Route element={<RequireAuth><Layout /></RequireAuth>}>
         <Route index element={<HomePage />} />
         <Route path="courses" element={<CourseLibraryPage />} />
         <Route path="courses/:courseId" element={<CourseDetailPage />} />

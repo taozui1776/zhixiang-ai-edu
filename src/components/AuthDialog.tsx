@@ -196,7 +196,7 @@ export default function AuthDialog({
             </DialogTitle>
             <DialogDescription>
               {step === 'role'
-                ? '请选择你的身份，开启智象 AI 学习之旅'
+                ? '请选择你的身份，开启希沃-智象AI学习之旅'
                 : role === 'teacher'
                 ? '登录后可使用备课管理、学情看板等教师专属功能'
                 : '登录后查看你的学习进度与实验记录'}
@@ -503,7 +503,7 @@ export default function AuthDialog({
         {step === 'role' && (
           <div className="px-6 pb-5 pt-2 border-t border-border/50 bg-muted/20">
             <p className="text-[11px] text-muted-foreground text-center">
-              智象平台 · 让每一节 AI 通识课都能动手 · 数据本地安全存储
+              希沃-智象平台 · 让每一节 AI 通识课都能动手 · 数据本地安全存储
             </p>
           </div>
         )}

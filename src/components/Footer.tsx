@@ -20,12 +20,12 @@ export default function Footer() {
                 />
               </div>
               <div>
-                <div className="text-lg font-bold text-white">智象</div>
+                <div className="text-lg font-bold text-white">希沃-智象</div>
                  <div className="text-xs text-background/60">人工智能通识教育平台</div>
               </div>
             </div>
              <p className="text-sm text-background/70 leading-relaxed max-w-xs">
-                让每一节 AI 通识课都能动手——智象，面向未来的人工智能通识教育平台，深耕中小学课堂，服务全学段成长。
+                让每一节 AI 通识课都能动手——希沃-智象，面向未来的人工智能通识教育平台，深耕中小学课堂，服务全学段成长。
              </p>
           </div>
 
@@ -65,7 +65,7 @@ export default function Footer() {
               <li><Link to="/copyright" className="hover:text-white transition-colors flex items-center gap-1"><ShieldCheck className="size-3" />版权与合规</Link></li>
                <li><Link to="/open-platform" className="hover:text-white transition-colors">开放平台</Link></li>
                <li><Link to="/teacher" className="hover:text-white transition-colors">教师中心</Link></li>
-               <li><Link to="/data-management" className="hover:text-white transition-colors">数据管理</Link></li>
+               <li><Link to="/teacher/data-management" className="hover:text-white transition-colors">数据管理</Link></li>
                <li><Link to="#" className="hover:text-white transition-colors">关于我们</Link></li>
             </ul>
           </div>
@@ -73,7 +73,7 @@ export default function Footer() {
 
         <div className="mt-10 pt-6 border-t border-background/10 flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="text-xs text-background/50 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
-            <span>智象 AI人工智能通识教育平台 © 2026 | 皖ICP备XXXXXXXX号</span>
+            <span>希沃-智象 AI人工智能通识教育平台 © 2026 | 皖ICP备XXXXXXXX号</span>
             <span className="hidden sm:inline">·</span>
             <span className="flex items-center gap-1.5">
               <Mail className="size-3" />

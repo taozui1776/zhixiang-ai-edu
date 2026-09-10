@@ -110,7 +110,7 @@ export default function Header() {
   }, [isLoggedIn, userRole]);
 
   // 专业版才能看到的菜单项
-  const PRO_MORE_PATHS = ['/class', '/analytics', '/school', '/data-management'];
+  const PRO_MORE_PATHS = ['/class', '/analytics', '/school', '/teacher/data-management'];
 
   const filteredMoreItems = useMemo(() => {
     if (isPro) return TEACHER_MORE_ITEMS;
@@ -141,7 +141,7 @@ export default function Header() {
             />
           </div>
           <div className="flex flex-col items-start leading-tight">
-            <span className="text-base font-bold text-foreground">智象</span>
+            <span className="text-base font-bold text-foreground">希沃-智象</span>
             <span className="text-[10px] text-muted-foreground hidden sm:block">
                人工智能通识教育平台
             </span>

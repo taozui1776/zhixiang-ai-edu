@@ -52,7 +52,7 @@ const PLUGIN_ID = 'ai_edu_multi_scene_text_generate_1';
 
 // AI助手小象头像
 const ELEPHANT_AVATAR =
-  '';
+  'https://aka.doubaocdn.com/s/RUYRoCZ6Ts';
 
 // 场景分类
 const SCENE_CATEGORIES = [
