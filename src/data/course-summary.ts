@@ -30,7 +30,7 @@ export const MOCK_COURSE_SUMMARY: ICourseSummary[] = [
     description:
       '面向小学高段学生的 AI 入门课程，从身边的人工智能说起，通过趣味实验带领学生认识 AI 的基本概念与应用场景。',
     coverImage:
-      '/spark/app/app_17dew4qtx2n/runtime/api/v1/storage/object/bucket_aadktjnrk6acw_static/static%2Faadkuiealycnu_ve_miaoda',
+      '',
     category: 'AI 通识',
     tags: ['图形化编程', 'AI 体验', '项目式学习'],
     duration: 320,
@@ -46,7 +46,7 @@ export const MOCK_COURSE_SUMMARY: ICourseSummary[] = [
     description:
       '6大PBL项目式学习课程，以真实问题驱动学生跨学科探究，涵盖智能生活、创意表达、数据洞察等核心主题，培养计算思维与创新实践能力。',
     coverImage:
-      '/spark/app/app_17dew4qtx2n/runtime/api/v1/storage/object/bucket_aadktjnrk6acw_static/static%2Faadkuisammuhs_ve_miaoda',
+      '',
     category: 'PBL 项目',
     tags: ['项目式学习', '跨学科', '小组合作', '计算思维'],
     duration: 1200,
@@ -64,7 +64,7 @@ export const MOCK_COURSE_SUMMARY: ICourseSummary[] = [
     description:
       '从图像识别原理到卷积神经网络，配合真实实验与可视化工具，让初中学生看懂 AI 视觉背后的技术逻辑。',
     coverImage:
-      '/spark/app/app_17dew4qtx2n/runtime/api/v1/storage/object/bucket_aadktjnrk6acw_static/static%2Faadkuig6x46js_ve_miaoda',
+      '',
     category: 'AI 通识',
     tags: ['图像识别', '卷积网络', 'Python'],
     duration: 360,
@@ -80,7 +80,7 @@ export const MOCK_COURSE_SUMMARY: ICourseSummary[] = [
     description:
       '从零开始认识机器视觉，通过趣味实验带领学生了解图像采集、人脸检测、颜色识别等基础视觉应用，适合视觉入门初学者。',
     coverImage:
-      '/spark/app/app_17dew4qtx2n/runtime/api/v1/storage/object/bucket_aadktjnrk6acw_static/static%2Faadkuiubufics_ve_miaoda',
+      '',
     category: 'AI 应用',
     tags: ['图像识别', '入门', '趣味实验', 'OpenCV'],
     duration: 280,
@@ -98,7 +98,7 @@ export const MOCK_COURSE_SUMMARY: ICourseSummary[] = [
     description:
       '面向高中生的 AI 算法课程，从机器学习基础到深度学习原理，结合代码实践理解算法本质。',
     coverImage:
-      '/spark/app/app_17dew4qtx2n/runtime/api/v1/storage/object/bucket_aadktjnrk6acw_static/static%2Faadkuigkzt4ds_ve_miaoda',
+      '',
     category: 'AI 通识',
     tags: ['机器学习', '深度学习', 'Python', '数学基础'],
     duration: 400,

@@ -75,7 +75,7 @@ const primaryCourse: ISampleCourse = {
   description:
     '面向小学高段学生的 AI 入门课程，从身边的人工智能说起，通过趣味实验带领学生认识 AI 的基本概念与应用场景。',
   coverImage:
-    '/spark/app/app_17dew4qtx2n/runtime/api/v1/storage/object/bucket_aadktjnrk6acw_static/static%2Faadkuiealycnu_ve_miaoda',
+    '',
   category: 'AI 通识',
   tags: ['图形化编程', 'AI 体验', '项目式学习'],
   duration: 320,
@@ -1066,7 +1066,7 @@ const juniorCourse: ISampleCourse = {
   description:
     '从图像识别原理到卷积神经网络，配合真实实验与可视化工具，让初中学生看懂 AI 视觉背后的技术逻辑。',
   coverImage:
-    '/spark/app/app_17dew4qtx2n/runtime/api/v1/storage/object/bucket_aadktjnrk6acw_static/static%2Faadkuig6x46js_ve_miaoda',
+    '',
   category: '机器视觉',
   tags: ['图像识别', '卷积网络', 'Python'],
   duration: 360,
@@ -2083,7 +2083,7 @@ const seniorCourse: ISampleCourse = {
   description:
     '面向高中生的 AI 算法课程，从机器学习基础到深度学习原理，结合代码实践理解算法本质。',
   coverImage:
-    '/spark/app/app_17dew4qtx2n/runtime/api/v1/storage/object/bucket_aadktjnrk6acw_static/static%2Faadkuigkzt4ds_ve_miaoda',
+    '',
   category: '算法基础',
   tags: ['机器学习', '深度学习', 'Python', '数学基础'],
   duration: 400,

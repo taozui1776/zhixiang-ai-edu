@@ -125,7 +125,7 @@ export const MOCK_RECENT_COURSES: IRecentCourse[] = [
     lastVisit: '今天 10:40',
     progress: 37.5,
     coverImage:
-      '/spark/app/app_17dew4qtx2n/runtime/api/v1/storage/object/bucket_aadktjnrk6acw_static/static%2Faadkuiealycnu_ve_miaoda',
+      '',
   },
   {
     courseId: 'course-junior-vision',
@@ -134,7 +134,7 @@ export const MOCK_RECENT_COURSES: IRecentCourse[] = [
     lastVisit: '昨天 09:45',
     progress: 12.5,
     coverImage:
-      '/spark/app/app_17dew4qtx2n/runtime/api/v1/storage/object/bucket_aadktjnrk6acw_static/static%2Faadkuig6x46js_ve_miaoda',
+      '',
   },
   {
     courseId: 'course-senior-algorithm',
@@ -143,7 +143,7 @@ export const MOCK_RECENT_COURSES: IRecentCourse[] = [
     lastVisit: '3 天前',
     progress: 0,
     coverImage:
-      '/spark/app/app_17dew4qtx2n/runtime/api/v1/storage/object/bucket_aadktjnrk6acw_static/static%2Faadkuigkzt4ds_ve_miaoda',
+      '',
   },
 ];
 

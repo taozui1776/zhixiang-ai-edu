@@ -412,12 +412,16 @@ export default function CourseDetailPage() {
           <div className="flex flex-col md:flex-row gap-6">
             {/* 封面 */}
             <div className="w-full md:w-72 shrink-0">
-              <div className="aspect-video md:aspect-[4/3] rounded-xl overflow-hidden shadow-2xl ring-2 ring-white/20">
-                <Image
-                  src={course.coverImage}
-                  alt={course.title}
-                  className="w-full h-full object-cover"
-                />
+              <div className="aspect-video md:aspect-[4/3] rounded-xl overflow-hidden shadow-2xl ring-2 ring-white/20 bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 flex items-center justify-center">
+                {course.coverImage ? (
+                  <Image
+                    src={course.coverImage}
+                    alt={course.title}
+                    className="w-full h-full object-cover"
+                  />
+                ) : (
+                  <span className="text-white/90 text-5xl font-bold opacity-30">{course.title.charAt(0)}</span>
+                )}
               </div>
             </div>
 

@@ -15,7 +15,7 @@ const pblCourse: ISampleCourse = {
   description:
     '6大PBL项目式学习课程，以真实问题驱动学生跨学科探究，涵盖智能生活、创意表达、数据洞察等核心主题。',
   coverImage:
-    '/spark/app/app_17dew4qtx2n/runtime/api/v1/storage/object/bucket_aadktjnrk6acw_static/static%2Faadkuisammuhs_ve_miaoda',
+    '',
   category: 'PBL 项目',
   tags: ['项目式学习', '跨学科', '小组合作', '计算思维'],
   duration: 1200,
@@ -400,7 +400,7 @@ const visionIntroCourse: ISampleCourse = {
   description:
     '从零开始认识机器视觉，通过趣味实验带领学生了解图像采集、人脸检测、颜色识别等基础视觉应用。',
   coverImage:
-    '/spark/app/app_17dew4qtx2n/runtime/api/v1/storage/object/bucket_aadktjnrk6acw_static/static%2Faadkuiubufics_ve_miaoda',
+    '',
   category: 'AI 应用',
   tags: ['图像识别', '入门', '趣味实验', 'OpenCV'],
   duration: 280,

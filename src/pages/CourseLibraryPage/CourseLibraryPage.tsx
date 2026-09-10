@@ -357,12 +357,18 @@ function CourseCard({
       onClick={onClick}
     >
       {/* 封面 */}
-      <div className="relative aspect-video overflow-hidden bg-muted">
-        <Image
-          src={course.coverImage}
-          alt={course.title}
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-        />
+      <div className="relative aspect-video overflow-hidden bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500">
+        {course.coverImage ? (
+          <Image
+            src={course.coverImage}
+            alt={course.title}
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+          />
+        ) : (
+          <div className="w-full h-full flex items-center justify-center">
+            <span className="text-white/90 text-4xl font-bold opacity-30">{course.title.charAt(0)}</span>
+          </div>
+        )}
         <div className="absolute top-3 left-3 flex gap-2">
           <Badge className="text-[10px] bg-white/90 text-foreground border-0 backdrop-blur-xs">
             {course.stageLabel}

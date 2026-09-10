@@ -54,7 +54,7 @@ export const HARDWARE_CATEGORIES: IHardwareCategory[] = [
 ];
 
 // 统一占位图（后续可替换为真实硬件图）
-const PLACEHOLDER_IMG = '/spark/app/app_17dew4qtx2n/runtime/api/v1/storage/object/bucket_aadktjnrk6acw_static/static%2Faadktjlisj2mw_ve_miaoda';
+const PLACEHOLDER_IMG = '';
 
 export const HARDWARE_ALL: IHardware[] = [
   // ===== 主控板类 =====

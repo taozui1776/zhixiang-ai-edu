@@ -58,7 +58,7 @@ const ENTRY_CARDS = [
     gradient: 'from-blue-500 to-cyan-500',
     bgGlow: 'bg-blue-500/20',
     action: 'navigate',
-    path: '/courses',
+    path: '/prepare',
   },
   {
     id: 'class-mgmt',

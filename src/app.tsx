@@ -36,6 +36,8 @@ import ProfilePage from "@/pages/ProfilePage/ProfilePage";
 import SchoolAdminPage from "@/pages/SchoolAdminPage/SchoolAdminPage";
 import SubscriptionPage from "@/pages/SubscriptionPage/SubscriptionPage";
 import SubscriptionGuard from "@/components/SubscriptionGuard";
+import PreparePage from "@/pages/PreparePage/PreparePage";
+import MyMaterialsPage from "@/pages/MyMaterialsPage/MyMaterialsPage";
 
 export default function App() {
   return (
@@ -48,6 +50,8 @@ export default function App() {
         <Route index element={<HomePage />} />
         <Route path="courses" element={<CourseLibraryPage />} />
         <Route path="courses/:courseId" element={<CourseDetailPage />} />
+        <Route path="prepare" element={<PreparePage />} />
+        <Route path="my-materials" element={<MyMaterialsPage />} />
         <Route path="tools" element={<ToolsPage />} />
         <Route path="coding-lab" element={<CodingLabPage />} />
         <Route path="training" element={<TrainingPage />} />

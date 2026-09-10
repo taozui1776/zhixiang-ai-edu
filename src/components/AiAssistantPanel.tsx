@@ -52,7 +52,7 @@ const PLUGIN_ID = 'ai_edu_multi_scene_text_generate_1';
 
 // AI助手小象头像
 const ELEPHANT_AVATAR =
-  '/spark/app/app_17dew4qtx2n/runtime/api/v1/storage/object/bucket_aadktjnrk6acw_static/static%2Faadkuiqxkv2kw_ve_miaoda';
+  '';
 
 // 场景分类
 const SCENE_CATEGORIES = [
